@@ -73,6 +73,8 @@ class ConfigureDialog(QtGui.QDialog):
         self._previousIdentifier = self._ui.lineEdit0.text()
         config = {}
         config['identifier'] = self._ui.lineEdit0.text()
+        config['file_chooser_count'] = self._ui.spinBoxFileChoosers.value()
+        config['directory_chooser_count'] = self._ui.spinBoxDirectoryChoosers.value()
         return config
 
     def setConfig(self, config):
@@ -83,4 +85,6 @@ class ConfigureDialog(QtGui.QDialog):
         '''
         self._previousIdentifier = config['identifier']
         self._ui.lineEdit0.setText(config['identifier'])
+        self._ui.spinBoxDirectoryChoosers.setValue(config['directory_chooser_count'])
+        self._ui.spinBoxFileChoosers.setValue(config['file_chooser_count'])
 

@@ -23,18 +23,25 @@ class ChooserStep(WorkflowStepMountPoint):
         # Add any other initialisation code here:
         self._icon =  QtGui.QImage(':/chooserstep/images/data-source.png')
         # Ports:
-        self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
-                      'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
-                      'http://physiomeproject.org/workflow/1.0/rdf-schema#file'))
-        self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
-                      'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
-                      'http://physiomeproject.org/workflow/1.0/rdf-schema#directory'))
+#         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
+#                       'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
+#                       'http://physiomeproject.org/workflow/1.0/rdf-schema#file'))
+#         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
+#                       'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
+#                       'http://physiomeproject.org/workflow/1.0/rdf-schema#directory'))
         # Port data:
-        self._portData0 = None # http://physiomeproject.org/workflow/1.0/rdf-schema#file
-        self._portData1 = None # http://physiomeproject.org/workflow/1.0/rdf-schema#directory
+        self._portFileAnnotation = ('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
+                                    'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
+                                    'http://physiomeproject.org/workflow/1.0/rdf-schema#file')
+        self._portDirectoryAnnotation = ('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
+                                         'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
+                                         'http://physiomeproject.org/workflow/1.0/rdf-schema#directory')
+        self._portData = []
         # Config:
         self._config = {}
         self._config['identifier'] = ''
+        self._config['file_chooser_count'] = 0
+        self._config['directory_chooser_count'] = 1
 
 
     def execute(self):
@@ -52,10 +59,7 @@ class ChooserStep(WorkflowStepMountPoint):
         The index is the index of the port in the port list.  If there is only one
         provides port for this step then the index can be ignored.
         '''
-        if index == 0:
-            return self._portData0 # http://physiomeproject.org/workflow/1.0/rdf-schema#file
-        elif index == 1:
-            return self._portData1 # http://physiomeproject.org/workflow/1.0/rdf-schema#directory
+        return self._portData[index]
 
     def configure(self):
         '''
@@ -73,6 +77,7 @@ class ChooserStep(WorkflowStepMountPoint):
 
         if dlg.exec_():
             self._config = dlg.getConfig()
+            self._configurePorts()
 
         self._configured = dlg.validate()
         self._configuredObserver()
@@ -107,6 +112,16 @@ class ChooserStep(WorkflowStepMountPoint):
         d = ConfigureDialog()
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
+        self._configurePorts()
         self._configured = d.validate()
+        
+    def _configurePorts(self):
+        self._ports = []
+        file_choosers = self._config['file_chooser_count']
+        for _ in range(file_choosers):
+            self.addPort(self._portFileAnnotation)
+        directory_choosers = self._config['directory_chooser_count']
+        for _ in range(directory_choosers):
+            self.addPort(self._portDirectoryAnnotation)
 
 
