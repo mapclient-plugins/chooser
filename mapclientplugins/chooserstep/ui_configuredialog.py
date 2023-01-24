@@ -1,63 +1,95 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'qt/configuredialog.ui'
-#
-# Created: Thu Jun 11 11:28:57 2015
-#      by: pyside-uic 0.2.15 running on PySide 1.2.2
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'configuredialog.ui'
+##
+## Created by: Qt User Interface Compiler version 6.4.1
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide import QtCore, QtGui
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialog, QDialogButtonBox,
+    QGridLayout, QGroupBox, QLabel, QLineEdit,
+    QSizePolicy, QSpacerItem, QSpinBox, QWidget)
 
 class Ui_ConfigureDialog(object):
     def setupUi(self, ConfigureDialog):
-        ConfigureDialog.setObjectName("ConfigureDialog")
+        if not ConfigureDialog.objectName():
+            ConfigureDialog.setObjectName(u"ConfigureDialog")
         ConfigureDialog.resize(418, 303)
-        self.gridLayout = QtGui.QGridLayout(ConfigureDialog)
-        self.gridLayout.setObjectName("gridLayout")
-        self.configGroupBox = QtGui.QGroupBox(ConfigureDialog)
-        self.configGroupBox.setTitle("")
-        self.configGroupBox.setObjectName("configGroupBox")
-        self.gridLayout_2 = QtGui.QGridLayout(self.configGroupBox)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.label0_3 = QtGui.QLabel(self.configGroupBox)
-        self.label0_3.setObjectName("label0_3")
+        self.gridLayout = QGridLayout(ConfigureDialog)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.configGroupBox = QGroupBox(ConfigureDialog)
+        self.configGroupBox.setObjectName(u"configGroupBox")
+        self.gridLayout_2 = QGridLayout(self.configGroupBox)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.label0_3 = QLabel(self.configGroupBox)
+        self.label0_3.setObjectName(u"label0_3")
+
         self.gridLayout_2.addWidget(self.label0_3, 2, 0, 1, 1)
-        self.spinBoxFileChoosers = QtGui.QSpinBox(self.configGroupBox)
+
+        self.spinBoxFileChoosers = QSpinBox(self.configGroupBox)
+        self.spinBoxFileChoosers.setObjectName(u"spinBoxFileChoosers")
         self.spinBoxFileChoosers.setMinimum(0)
-        self.spinBoxFileChoosers.setProperty("value", 0)
-        self.spinBoxFileChoosers.setObjectName("spinBoxFileChoosers")
+        self.spinBoxFileChoosers.setValue(0)
+
         self.gridLayout_2.addWidget(self.spinBoxFileChoosers, 1, 1, 1, 1)
-        self.label0 = QtGui.QLabel(self.configGroupBox)
-        self.label0.setObjectName("label0")
+
+        self.label0 = QLabel(self.configGroupBox)
+        self.label0.setObjectName(u"label0")
+
         self.gridLayout_2.addWidget(self.label0, 0, 0, 1, 1)
-        self.lineEdit0 = QtGui.QLineEdit(self.configGroupBox)
-        self.lineEdit0.setObjectName("lineEdit0")
+
+        self.lineEdit0 = QLineEdit(self.configGroupBox)
+        self.lineEdit0.setObjectName(u"lineEdit0")
+
         self.gridLayout_2.addWidget(self.lineEdit0, 0, 1, 1, 1)
-        self.spinBoxDirectoryChoosers = QtGui.QSpinBox(self.configGroupBox)
+
+        self.spinBoxDirectoryChoosers = QSpinBox(self.configGroupBox)
+        self.spinBoxDirectoryChoosers.setObjectName(u"spinBoxDirectoryChoosers")
         self.spinBoxDirectoryChoosers.setMinimum(0)
-        self.spinBoxDirectoryChoosers.setObjectName("spinBoxDirectoryChoosers")
+
         self.gridLayout_2.addWidget(self.spinBoxDirectoryChoosers, 2, 1, 1, 1)
-        self.label0_2 = QtGui.QLabel(self.configGroupBox)
-        self.label0_2.setObjectName("label0_2")
+
+        self.label0_2 = QLabel(self.configGroupBox)
+        self.label0_2.setObjectName(u"label0_2")
+
         self.gridLayout_2.addWidget(self.label0_2, 1, 0, 1, 1)
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout_2.addItem(spacerItem, 3, 0, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout_2.addItem(self.verticalSpacer, 3, 0, 1, 1)
+
+
         self.gridLayout.addWidget(self.configGroupBox, 0, 0, 1, 1)
-        self.buttonBox = QtGui.QDialogButtonBox(ConfigureDialog)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
+
+        self.buttonBox = QDialogButtonBox(ConfigureDialog)
+        self.buttonBox.setObjectName(u"buttonBox")
+        self.buttonBox.setOrientation(Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
+
         self.gridLayout.addWidget(self.buttonBox, 1, 0, 1, 1)
 
+
         self.retranslateUi(ConfigureDialog)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), ConfigureDialog.accept)
-        QtCore.QObject.connect(ConfigureDialog, QtCore.SIGNAL("rejected()"), ConfigureDialog.reject)
-        QtCore.QMetaObject.connectSlotsByName(ConfigureDialog)
+        self.buttonBox.accepted.connect(ConfigureDialog.accept)
+        ConfigureDialog.rejected.connect(ConfigureDialog.reject)
+
+        QMetaObject.connectSlotsByName(ConfigureDialog)
+    # setupUi
 
     def retranslateUi(self, ConfigureDialog):
-        ConfigureDialog.setWindowTitle(QtGui.QApplication.translate("ConfigureDialog", "ConfigureDialog", None, QtGui.QApplication.UnicodeUTF8))
-        self.label0_3.setText(QtGui.QApplication.translate("ConfigureDialog", "Directory Choosers:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label0.setText(QtGui.QApplication.translate("ConfigureDialog", "identifier:  ", None, QtGui.QApplication.UnicodeUTF8))
-        self.label0_2.setText(QtGui.QApplication.translate("ConfigureDialog", "File Choosers:", None, QtGui.QApplication.UnicodeUTF8))
+        ConfigureDialog.setWindowTitle(QCoreApplication.translate("ConfigureDialog", u"ConfigureDialog", None))
+        self.configGroupBox.setTitle("")
+        self.label0_3.setText(QCoreApplication.translate("ConfigureDialog", u"Directory Choosers:", None))
+        self.label0.setText(QCoreApplication.translate("ConfigureDialog", u"identifier:  ", None))
+        self.label0_2.setText(QCoreApplication.translate("ConfigureDialog", u"File Choosers:", None))
+    # retranslateUi
 

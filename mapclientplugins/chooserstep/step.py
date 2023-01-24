@@ -4,7 +4,7 @@ MAP Client Plugin Step
 '''
 import json
 
-from PySide import QtGui
+from PySide6 import QtGui
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.chooserstep.configuredialog import ConfigureDialog
@@ -21,7 +21,7 @@ class ChooserStep(WorkflowStepMountPoint):
         self._configured = False # A step cannot be executed until it has been configured.
         self._category = 'Source'
         # Add any other initialisation code here:
-        self._icon =  QtGui.QImage(':/chooserstep/images/data-source.png')
+        self._icon = QtGui.QImage(':/chooserstep/images/data-source.png')
         # Ports:
 #         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
 #                       'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
